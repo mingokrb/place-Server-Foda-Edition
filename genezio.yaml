@@ -3,7 +3,7 @@ frontend:
     publish: ""
     scripts:
         build: ""
-        deploy: ""
+        deploy: "web/root/desktop.html"
     subdomain: place-sfe
 name: place-sfe
 region: us-east-1
