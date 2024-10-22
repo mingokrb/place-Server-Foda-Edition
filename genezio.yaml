@@ -3,7 +3,7 @@ frontend:
     publish: ""
     scripts:
         build: ""
-        deploy: "./web/root"
+        deploy: "place -root web/root -port :8080"
     subdomain: place-sfe
 name: place-sfe
 region: us-east-1
