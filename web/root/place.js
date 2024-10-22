@@ -16,7 +16,7 @@ class Place {
 	}
 
 	initConnection() {
-		this.#loadingp.innerHTML = "connecting";
+		this.#loadingp.innerHTML = "conectando";
 
 		let host = window.location.hostname;
 		let port = window.location.port;
@@ -32,12 +32,12 @@ class Place {
 		}
 
 		this.#connect(wsProt + "//" + host + "/ws");
-		this.#loadingp.innerHTML = "downloading canvas";
+		this.#loadingp.innerHTML = "baixando canvas";
 
 		fetch(window.location.protocol + "//" + host + "/place.png")
 			.then(async resp => {
 				if (!resp.ok) {
-					console.error("Error downloading canvas.");
+					console.error("Erro ao baixar canvas.");
 					return null;
 				}
 
@@ -60,7 +60,7 @@ class Place {
 			if (value) {
 				a.set(value, pos);
 				pos += value.length;
-				this.#loadingp.innerHTML = "downloading map " + Math.round(pos / len * 100) + "%";
+				this.#loadingp.innerHTML = "baixando mapa (" + Math.round(pos / len * 100) + "%)";
 			}
 			if (done) break;
 		}
@@ -88,8 +88,8 @@ class Place {
 		};
 
 		const socketError = (event) => {
-			console.error("Error making WebSocket connection.");
-			alert("Failed to connect.");
+			console.error("Erro ao conectar ao WebSocket.");
+			alert("Falha ao conectar.");
 			this.#socket.close();
 		};
 
@@ -113,8 +113,8 @@ class Place {
 			this.#glWindow.setPixelColor(x, y, color);
 			this.#glWindow.draw();
 		} else {
-			alert("Disconnected.");
-			console.error("Disconnected.");
+			alert("Desconectado.");
+			console.error("Desconectado.");
 		}
 	}
 
@@ -155,13 +155,13 @@ class Place {
 	}
 
 	#keyPrompt() {
-		let key = prompt("This canvas uses a whitelist.\n\nIf you don't have a key you can still view the canvas but you will not be able to draw.\n\nTo request an access key you can create an issue on the GitHub project.\n\nIf you already have one, enter it here.", "");
+		let key = prompt("Este canvas utiliza uma lista branca.\n\nSe você não tiver uma chave, você ainda poderá ver o canvas, mas não poderá desenhar.\n\nPara pedir uma chave de acesso, você pode criar uma issue no projeto do GitHub.\n\nSe você já tiver uma, insira ela aqui.", "");
 		fetch("./verifykey?key="+key)
 			.then(async resp => {
 				if (resp.ok) {
 					window.location.reload();
 				} else {
-					alert("Bad key.")
+					alert("Chave inválida.")
 				}
 			});
 	}
