@@ -2,7 +2,7 @@ frontend:
     path: ./
     publish: ""
     scripts:
-        build: "go build cmd/place/place.go"
+        build: go build cmd/place/place.go
         deploy: place -root web/root -port :8080
     subdomain: place-sfe
 name: place-sfe
