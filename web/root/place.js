@@ -155,7 +155,7 @@ class Place {
 	}
 
 	#keyPrompt() {
-		let key = prompt("Este canvas utiliza uma lista branca.\n\nSe você não tiver uma chave, você ainda poderá ver o canvas, mas não poderá desenhar.\n\nPara pedir uma chave de acesso, você pode criar uma issue no projeto do GitHub.\n\nSe você já tiver uma, insira ela aqui.", "");
+		let key = prompt("Este canvas utiliza uma lista branca.\n\nSe você não tiver uma chave, você ainda poderá ver o canvas, mas não poderá desenhar.\n\nPara pedir uma chave de acesso, você pode mencionar @mingokrb no tópico do r/place no Server Foda (recomendado), ou criar um issue no repositório do GitHub — desde que esteja claro quem você é.\n\nSe você já tiver uma, insira ela aqui.", "");
 		fetch("./verifykey?key="+key)
 			.then(async resp => {
 				if (resp.ok) {
